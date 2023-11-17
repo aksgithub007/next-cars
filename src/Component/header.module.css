@@ -1,0 +1,56 @@
+.topbar {
+  width: 100%;
+  padding: 10px 10px;
+  background-color: cornflowerblue;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.brand {
+  color: #fff;
+  font-size: 25px;
+  line-height: 35px;
+  font-weight: 700;
+}
+.logoutSection {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.list {
+  list-style-type: none;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.list li {
+  color: #fff;
+  font-size: 18px;
+  line-height: 25px;
+  font-weight: 500;
+  text-decoration: none;
+  margin-right: 15px;
+}
+.list li a {
+  color: #fff;
+  font-size: 18px;
+  line-height: 25px;
+  font-weight: 500;
+  text-decoration: none;
+  margin-right: 15px;
+}
+.list li {
+  cursor: pointer;
+  transition: color 0.5s ease-in;
+}
+.list li a {
+  cursor: pointer;
+  transition: color 0.5s ease-in;
+}
+.list li:hover {
+  color: #333;
+}
+.list li a:hover {
+  color: #333;
+}
