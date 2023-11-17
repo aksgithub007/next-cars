@@ -7,6 +7,11 @@ import { useSelector, useDispatch } from "react-redux";
 import classes from "./header.module.css";
 import { useRouter, usePathname } from "next/navigation";
 import Swal from "sweetalert2";
+import Container from "react-bootstrap/Container";
+import Nav from "react-bootstrap/Nav";
+import Navbar from "react-bootstrap/Navbar";
+import NavDropdown from "react-bootstrap/NavDropdown";
+import Offcanvas from "react-bootstrap/Offcanvas";
 
 function Header() {
   const router = useRouter();
@@ -59,21 +64,31 @@ function Header() {
   return (
     <>
       {pathName !== "/login" && pathName !== "/register" ? (
-        <div className={classes.topbar}>
-          <div className={classes.brand}>
-            <h2>
-              <Link href="/" style={{ textDecoration: "none", color: "#fff" }}>
-                ASD
-              </Link>
-            </h2>
-          </div>
-          <div className={classes.logoutSection}>
-            <ul className={classes.list}>
-              <li>{user?.name}</li>
-              <li onClick={logoutHandler}>Logout</li>
-            </ul>
-          </div>
-        </div>
+        <Navbar style={{ background: "#cfe2ff" }}>
+          <Container fluid>
+            <Navbar.Brand href="/" style={{ color: "#495057" }}>
+              Car Rental
+            </Navbar.Brand>
+            <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-lg`} />
+            <Navbar.Offcanvas
+              id={`offcanvasNavbar-expand-lg`}
+              aria-labelledby={`offcanvasNavbarLabel-expand-lg`}
+              placement="end"
+            >
+              <Offcanvas.Header closeButton>
+                <Offcanvas.Title id={`offcanvasNavbarLabel-expand-lg`}>
+                  Car Rental
+                </Offcanvas.Title>
+              </Offcanvas.Header>
+              <Offcanvas.Body>
+                <Nav className="justify-content-end flex-grow-1 pe-3">
+                  <Nav.Link href="#action1">{user?.name}</Nav.Link>
+                  <Nav.Link onClick={logoutHandler}>Logout</Nav.Link>
+                </Nav>
+              </Offcanvas.Body>
+            </Navbar.Offcanvas>
+          </Container>
+        </Navbar>
       ) : null}
     </>
   );

@@ -3,6 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./globals.css";
 import Header from "@/Component/Header";
 import RootProvider from "@/Helper/RootProvider";
+import Carousel from "@/Component/Carousels";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -17,6 +18,7 @@ export default function RootLayout({ children }) {
       <body className={inter.className}>
         <RootProvider>
           <Header />
+          <Carousel />
           {children}
         </RootProvider>
       </body>

@@ -1,0 +1,28 @@
+.card {
+  box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px,
+    rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+  cursor: pointer;
+  transition: all 0.5s ease-in;
+  width: 85%;
+}
+
+.card:hover {
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
+    rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+}
+.cardImage {
+  padding: 10px;
+  border-radius: 20px;
+  object-fit: contain;
+  object-position: center;
+}
+.titleSection {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.model {
+  border: 3px dotted #cfe2ff;
+  padding: 5px 20px;
+  border-radius: 15px;
+}
