@@ -20,6 +20,7 @@
     "next": "14.0.2",
     "react": "^18",
     "react-bootstrap": "^2.9.1",
+    "react-data-table-component": "^7.5.4",
     "react-datepicker": "^4.21.0",
     "react-dom": "^18",
     "react-hook-form": "^7.48.2",

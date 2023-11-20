@@ -12,7 +12,6 @@ export async function GET(request) {
   try {
     const userId = await validateToken(request);
     const { searchParams } = new URL(request.url);
-    console.log(searchParams);
     const user = searchParams.get("user");
     const response = await Booking.find({ user })
       .populate("car")

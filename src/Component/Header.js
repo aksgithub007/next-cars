@@ -82,7 +82,21 @@ function Header() {
               </Offcanvas.Header>
               <Offcanvas.Body>
                 <Nav className="justify-content-end flex-grow-1 pe-3">
-                  <Nav.Link href="#action1">{user?.name}</Nav.Link>
+                  {user?.isAdmin ? (
+                    <>
+                      <Nav.Link href="/general">General</Nav.Link>
+                      <Nav.Link href="/users">Users</Nav.Link>
+                      <Nav.Link href="/cars">Cars</Nav.Link>
+                      <Nav.Link href="/bookings">Bookings</Nav.Link>
+                    </>
+                  ) : (
+                    <>
+                      <Nav.Link href="/general">General</Nav.Link>
+                      <Nav.Link href="/cars">Cars</Nav.Link>
+                      <Nav.Link href="/bookings">Bookings</Nav.Link>
+                    </>
+                  )}
+                  <Nav.Link href="/">{user?.name}</Nav.Link>
                   <Nav.Link onClick={logoutHandler}>Logout</Nav.Link>
                 </Nav>
               </Offcanvas.Body>

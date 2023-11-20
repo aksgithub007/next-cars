@@ -1,9 +1,34 @@
+.main_wrapper {
+  display: block;
+  width: 100%;
+  padding: 40px 0px;
+  background-color: #cfe2ff;
+}
+.Heading {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.Heading h4 {
+  font-weight: 500;
+  color: #33334f;
+  font-size: 30px;
+  line-height: 40px;
+}
+.Heading p {
+  font-size: 14px;
+  color: #4e5d78;
+  font-weight: 400;
+}
 .card {
-  box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px,
-    rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+  padding: 10px;
+  background: linear-gradient(1turn, #f1f6fd 50%, #edf1f7);
+  box-shadow: 3px 3px 9px rgba(164, 164, 186, 0.2);
+  border: 1px solid #fff;
+  width: 90%;
+  border-radius: 20px;
   cursor: pointer;
-  transition: all 0.5s ease-in;
-  width: 85%;
+  margin: 40px 0px;
 }
 
 .card:hover {
@@ -21,8 +46,75 @@
   justify-content: space-between;
   align-items: center;
 }
+.title h5 {
+  font-size: 22px;
+  line-height: 30px;
+  color: #33334f;
+  margin-bottom: 0;
+  font-weight: 400;
+}
 .model {
-  border: 3px dotted #cfe2ff;
+  border-radius: 12px;
+  color: #33334f;
+  font-family: "Nunito", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  border: 2px dashed rgba(24, 156, 244, 0.44);
   padding: 5px 20px;
-  border-radius: 15px;
+}
+.featureSection {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.featureSection .icon {
+  font-size: 14px;
+  color: #189cf4;
+}
+
+.featureSection .subSection {
+  font-size: 14px;
+  line-height: 20px;
+  color: #4e5d78;
+}
+.footerButton {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.button {
+  font-size: 14px;
+  color: #fff;
+  font-weight: 600;
+  background-color: #189cf4;
+  padding: 8px 16px;
+  border-radius: 12px;
+  transition: all 0.5s ease-in;
+}
+.button:hover {
+  box-shadow: 3px 3px 9px rgba(55, 170, 247, 0.3);
+  color: #fff;
+  background: linear-gradient(90deg, #6cc4ff 6%, #189cf4);
+  border-color: #189cf4;
+}
+
+.LinkButton {
+  font-size: 14px;
+  color: #fff;
+  font-weight: 600;
+  background-color: #189cf4;
+  text-decoration: none;
+  padding: 12px 24px;
+  border-radius: 12px;
+  transition: all 0.5s ease-in;
+}
+.LinkButton:hover {
+  box-shadow: 3px 3px 9px rgba(55, 170, 247, 0.3);
+  color: #fff;
+  background: linear-gradient(90deg, #6cc4ff 6%, #189cf4);
+  border-color: #189cf4;
+}
+.exploreWrapper {
+  text-align: center;
+  margin: 45px auto;
 }

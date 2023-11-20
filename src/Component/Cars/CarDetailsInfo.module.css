@@ -1,0 +1,110 @@
+.carDetailMainWrapper {
+  display: block;
+  width: 100vw;
+  background: linear-gradient(1turn, #f1f6fd 50%, #edf1f7);
+  padding: 100px 0px;
+}
+
+.headingSection {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.headingSection h3 {
+  font-size: 25px;
+  line-height: 20px;
+  font-weight: 600;
+  color: #33334f;
+}
+.headingSection h6 {
+  font-size: 40px;
+  line-height: 35px;
+  font-weight: 700;
+  color: #33334f;
+}
+.contentInfo {
+  margin-top: 15px;
+}
+.contentInfo p {
+  margin-bottom: 0px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #4e5d78;
+}
+.contentInfo p strong {
+  font-weight: 700;
+  color: #4e5d78;
+}
+.bookSection,
+.checkRentSection,
+.finalBookingSection {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 25px 0px;
+}
+.bookSection h5 {
+  font-size: 20px;
+  font-weight: 600;
+  color: #33334f;
+}
+.bookSection .datePicker {
+  margin-left: 10px;
+  border: 1px solid #189cf4;
+  padding: 5px 8px;
+  border-radius: 12px;
+  color: #33334f;
+}
+.button {
+  font-size: 14px;
+  color: #fff;
+  font-weight: 600;
+  background-color: #189cf4;
+  padding: 8px 16px;
+  border-radius: 12px;
+  transition: all 0.5s ease-in;
+  margin-left: 15px;
+  cursor: pointer;
+}
+.button:hover {
+  box-shadow: 3px 3px 9px rgba(55, 170, 247, 0.3);
+  color: #fff;
+  background: linear-gradient(90deg, #6cc4ff 6%, #189cf4);
+  border-color: #189cf4;
+}
+.button:disabled {
+  background-color: #33334f;
+  cursor: not-allowed;
+}
+
+.checkRentSection h5 {
+  font-size: 20px;
+  font-weight: 600;
+  color: #33334f;
+}
+
+.checkRentSection .rentIcon {
+  color: #33334f;
+  font-size: 18px;
+  font-weight: 500;
+  margin-left: 5px;
+}
+
+.images {
+  width: 100%;
+  height: 350px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+  cursor: pointer;
+}
+.images img {
+  object-fit: cover;
+  object-position: top center;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.7s ease-in-out;
+}
+.images:hover img {
+  transform: scale(1.1);
+}

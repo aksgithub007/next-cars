@@ -4,51 +4,104 @@ import React, { useEffect, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import { Container, Row } from "react-bootstrap";
+import { BsFuelPump } from "react-icons/bs";
+import { BsSpeedometer2 } from "react-icons/bs";
+import { PiSteeringWheelBold } from "react-icons/pi";
 import classes from "./HomeCarSection.module.css";
+import { useRouter } from "next/navigation";
+import Link from "next/link";
+import { useDispatch, useSelector } from "react-redux";
+import { carsThunk } from "@/Redux/carSlice";
 
 function HomeCarSection() {
-  const [cars, setCars] = useState([]);
+  const stateInfo = useSelector((state) => state.cars.cars);
+  const dispatch = useDispatch();
+  const router = useRouter();
   useEffect(() => {
-    const getAllCars = async () => {
-      const response = await axios.get("http://localhost:3000/api/users/car");
-      const finalData = await response.data;
-      setCars(finalData?.data);
-    };
-    getAllCars();
+    dispatch(carsThunk());
   }, []);
+
+  const handleDetails = (id) => {
+    router.push(`/cars/${id}`);
+  };
 
   return (
     <>
-      <Container>
-        <Row>
-          <div className="col-12">
-            <div className="Heading">
-              <h4>Choose your Desired Car Model</h4>
-              <p>Who are in extremely love with eco friendly system.</p>
+      <div className={classes.main_wrapper}>
+        <Container>
+          <Row>
+            <div className="col-12">
+              <div className={classes.Heading}>
+                <h4>Choose your Desired Car Model</h4>
+                <p>Who are in extremely love with eco friendly system.</p>
+              </div>
             </div>
-          </div>
-          {cars.slice(0, 3).map((item) => (
-            <div className="col-4">
-              <Card className={classes.card}>
-                <Card.Img
-                  variant="top"
-                  src={item?.image}
-                  className={classes.cardImage}
-                />
-                <Card.Body>
-                  <div className={classes.titleSection}>
-                    <div className={classes.title}>
-                      <h5>{item?.name}</h5>
+            {stateInfo?.data?.slice(0, 3).map((item) => (
+              <div className="col-4">
+                <Card className={classes.card}>
+                  <Card.Img
+                    variant="top"
+                    src={item?.image}
+                    className={classes.cardImage}
+                  />
+                  <Card.Body>
+                    <div className={classes.titleSection}>
+                      <div className={classes.title}>
+                        <h5>{item?.name}</h5>
+                      </div>
+                      <div className={classes.model}>{item?.model}</div>
                     </div>
-                    <div className={classes.model}>{item?.model}</div>
-                  </div>
-                  <Button variant="primary">Go somewhere</Button>
-                </Card.Body>
-              </Card>
+                    <hr />
+                    <div className={classes.featureSection}>
+                      <div className={classes.subSection}>
+                        <p>
+                          <span>
+                            <BsFuelPump className={classes.icon} />
+                          </span>{" "}
+                          {item?.varient}
+                        </p>
+                      </div>
+                      <div className={classes.subSection}>
+                        <p>
+                          <span>
+                            <BsSpeedometer2 className={classes.icon} />
+                          </span>{" "}
+                          {item?.average} km / 1 Liter
+                        </p>
+                      </div>
+                      <div className={classes.subSection}>
+                        <p>
+                          <span>
+                            <PiSteeringWheelBold className={classes.icon} />
+                          </span>{" "}
+                          Automatic
+                        </p>
+                      </div>
+                    </div>
+                    <hr />
+                    <Button
+                      variant="primary"
+                      onClick={() => handleDetails(item._id)}
+                      className={classes.button}
+                    >
+                      View Details
+                    </Button>
+                  </Card.Body>
+                </Card>
+              </div>
+            ))}
+          </Row>
+          <Row>
+            <div className="col-12">
+              <div className={classes.exploreWrapper}>
+                <Link href="/cars" className={classes.LinkButton}>
+                  Explore All
+                </Link>
+              </div>
             </div>
-          ))}
-        </Row>
-      </Container>
+          </Row>
+        </Container>
+      </div>
     </>
   );
 }

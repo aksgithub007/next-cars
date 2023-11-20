@@ -10,6 +10,9 @@ import moment from "moment/moment";
 import { useRouter } from "next/navigation";
 import { useSelector } from "react-redux";
 import StripeCheckout from "react-stripe-checkout";
+import { Col, Container, Row } from "react-bootstrap";
+import Image from "next/image";
+import classes from "./CarDetailsInfo.module.css";
 
 function CarDetailsInfo() {
   const KEY =
@@ -122,7 +125,7 @@ function CarDetailsInfo() {
 
   return (
     <>
-      <div className="container">
+      {/* <div className="container">
         <div className="row d-flex justify-content-center">
           <div className="col-sm-12 col-md-8 col-lg-8 col-xl-8 col-xxl-8 ">
             <div className="imageContainer">
@@ -212,6 +215,101 @@ function CarDetailsInfo() {
             </StripeCheckout>
           </div>
         </div>
+      </div> */}
+
+      <div className={classes.carDetailMainWrapper}>
+        <Container>
+          <Row>
+            <Col xs={12} md={6} lg={6} xl={6} xxl={6}>
+              <div className={classes.headingSection}>
+                <h3>{car?.name}</h3>
+                <h6>{car?.model}</h6>
+              </div>
+
+              <div className={classes.contentInfo}>
+                <p style={{ marginBottom: "15px" }}>
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                </p>
+                <p>
+                  <strong>Varient:</strong> {car?.varient}
+                </p>
+                <p>
+                  <strong>Average:</strong> {car?.average} / 1 Liter
+                </p>
+                <p>
+                  <strong>Capacity:</strong> 04 Person
+                </p>
+                <p>
+                  <strong>Doors: </strong> 04
+                </p>
+                <p>
+                  <strong>Air Condition:</strong> Dual Zone
+                </p>
+                <p>
+                  <strong>Transmission:</strong> Automatic
+                </p>
+              </div>
+              <div className={classes.bookSection}>
+                <h5>Select Booking Slot : </h5>
+                <DatePicker
+                  selectsRange={true}
+                  startDate={startDate}
+                  endDate={endDate}
+                  onChange={(update) => {
+                    setDateRange(update);
+                  }}
+                  minDate={moment().toDate()}
+                  withPortal
+                  className={classes.datePicker}
+                />
+                <button
+                  disabled={startDate || endDate ? false : true}
+                  className={classes.button}
+                  onClick={handleCheckSlot}
+                >
+                  Check Availability
+                </button>
+              </div>
+              <div className={classes.checkRentSection}>
+                <h5>
+                  {" "}
+                  Total Rent:
+                  <FaDollarSign className={classes.rentIcon} />{" "}
+                  {totalRent ? totalRent : 0}{" "}
+                </h5>
+              </div>
+              <div className={classes.finalBookingSection}>
+                <button
+                  className={classes.button}
+                  onClick={() => router.back()}
+                >
+                  Back
+                </button>
+                <StripeCheckout
+                  token={(token) => bookHandler(token)}
+                  stripeKey={KEY}
+                  currency="USD"
+                  amount={totalRent * 100}
+                  shippingAddress
+                  key={KEY}
+                >
+                  <button
+                    className={classes.button}
+                    disabled={(startDate || endDate) && slotAbl ? false : true}
+                  >
+                    Book Now
+                  </button>
+                </StripeCheckout>
+              </div>
+            </Col>
+            <Col xs={12} md={6} lg={6} xl={6} xxl={6}>
+              <div className={classes.images}>
+                <Image src={car?.image} width={600} height={400} />
+              </div>
+            </Col>
+          </Row>
+        </Container>
       </div>
     </>
   );

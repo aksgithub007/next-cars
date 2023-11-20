@@ -23,7 +23,6 @@ function AddCarsForm({ user, show, setShow, rowInfo }) {
 
   const onChange = (imageList, addUpdateIndex) => {
     // data for submit
-    console.log(imageList, addUpdateIndex);
     setImages(imageList);
   };
 
@@ -36,7 +35,7 @@ function AddCarsForm({ user, show, setShow, rowInfo }) {
         varient: data.varient,
         average: Number(data.average),
         rent: Number(data.rent),
-        image: rowInfo ? rowInfo?.image : images[0]?.data_url,
+        image: images ? images[0]?.data_url : rowInfo?.image,
         userId: user?._id,
       };
       // console.log(finalCar);
@@ -52,7 +51,8 @@ function AddCarsForm({ user, show, setShow, rowInfo }) {
         setShow(false);
         reset();
         setImages([]);
-        router.push("/");
+
+        router.push("/cars");
       } else {
         Swal.fire({
           icon: "error",
@@ -75,7 +75,7 @@ function AddCarsForm({ user, show, setShow, rowInfo }) {
 
   useEffect(() => {
     console.log(rowInfo, "Edit Part Info");
-    setImages([rowInfo?.image]);
+
     if (rowInfo) {
       reset({
         name: rowInfo?.name,
@@ -94,6 +94,7 @@ function AddCarsForm({ user, show, setShow, rowInfo }) {
       });
     }
   }, [reset, rowInfo]);
+
   return (
     <>
       <div>
@@ -232,7 +233,7 @@ function AddCarsForm({ user, show, setShow, rowInfo }) {
                             >
                               <img
                                 key={index}
-                                src={rowInfo ? rowInfo?.image : image.data_url}
+                                src={rowInfo ? rowInfo?.image : image?.data_url}
                                 style={{ width: "60px", height: "60px" }}
                                 //
                                 //  onClick={() =>
