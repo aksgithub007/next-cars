@@ -2,6 +2,8 @@ import { dbConnect } from "@/DB/DBConfig";
 import { validateToken } from "@/Helper/ValidateToken";
 import { Booking } from "@/Model/BookingModel";
 import { NextResponse } from "next/server";
+import nodemailer from "nodemailer";
+
 const stripe = require("stripe")(
   "sk_test_51ODNAXSHryygRBaf9yvQIia25TWzTfKKyxdwAqQzvh9t8UVnzNTNxKzUDymhDYa0D5yOIU4TphByY0uvzbtnc0Im00G81gNY5w"
 );
@@ -39,8 +41,6 @@ export async function POST(request) {
       email: requestBody.token.email,
     });
 
-    console.log(customer, "customer");
-
     //Create Payments
     const paymentIntent = await stripe.paymentIntents.create(
       {
@@ -52,11 +52,41 @@ export async function POST(request) {
       }
     );
 
-    console.log(paymentIntent, "Payment");
     //Add Payment in request body
     requestBody.paymentId = paymentIntent.id;
 
     await Booking.create(requestBody);
+
+    //Send Booking  Info To user
+    const transpoter = nodemailer.createTransport({
+      service: "gmail",
+      secure: true,
+      auth: {
+        user: "aksgithub@gmail.com",
+        pass: process.env.App_Password,
+      },
+    });
+
+    const mailOption = {
+      from: "aksgithub@gmail.com",
+      to: requestBody.token.email,
+      subject: "Car Booking Successfully",
+      html: `
+      <h3>Hello </h3>
+      <p>You are successfully Booked a car. Booking details as per follows: </p>
+      <ul>
+      <li>email: ${requestBody.token.email}</li>
+      <li>Start Date: ${requestBody.startDate}</li>
+      <li>End Date: ${requestBody.endDate}</li>
+      <li>Total Days: ${requestBody.totalDays}</li>
+      <li>Total Rent: $${requestBody.totalRent}</li>
+      <li>Payment Id: $${requestBody.paymentId}</li>
+      </ul>
+      <p>If you have any query please revert back mail to our support center</p>
+      `,
+    };
+
+    await transpoter.sendMail(mailOption);
 
     return NextResponse.json({
       message: "Booking Added Successfully",

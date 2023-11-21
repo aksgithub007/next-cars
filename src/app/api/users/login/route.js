@@ -4,6 +4,7 @@ import { NextResponse } from "next/server";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import { cookies } from "next/headers";
+import nodemailer from "nodemailer";
 export async function POST(request) {
   try {
     await dbConnect();
@@ -36,6 +37,27 @@ export async function POST(request) {
       },
       { maxAge: "1d" }
     );
+    //Send Login Info To user
+    const transpoter = nodemailer.createTransport({
+      service: "gmail",
+      secure: true,
+      auth: {
+        user: "aksgithub@gmail.com",
+        pass: process.env.App_Password,
+      },
+    });
+
+    const mailOption = {
+      from: "aksgithub@gmail.com",
+      to: user.email,
+      subject: "Login SuccessFully",
+      html: `
+      <h3>Hello ${user.name}</h3>
+      <p>You are successfully logged in. but if you are not log in then please inform to our support center</p>
+      `,
+    };
+
+    await transpoter.sendMail(mailOption);
 
     return NextResponse.json(
       {
