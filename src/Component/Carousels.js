@@ -11,10 +11,10 @@ function Carousels() {
       {pathName === "/" ? (
         <Carousel>
           <Carousel.Item>
-            <img src="./d1.jpg" />
+            <img src="./d1.jpg" alt="sample Text" />
           </Carousel.Item>
           <Carousel.Item>
-            <img src="./d2.jpg" />
+            <img src="./d2.jpg" alt="sample Text" />
           </Carousel.Item>
         </Carousel>
       ) : null}

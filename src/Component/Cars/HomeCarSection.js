@@ -37,7 +37,7 @@ function HomeCarSection() {
               </div>
             </div>
             {stateInfo?.data?.slice(0, 3).map((item) => (
-              <div className="col-4">
+              <div className="col-4" key={item.name}>
                 <Card className={classes.card}>
                   <Card.Img
                     variant="top"

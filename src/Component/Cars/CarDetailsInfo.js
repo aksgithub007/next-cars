@@ -305,7 +305,12 @@ function CarDetailsInfo() {
             </Col>
             <Col xs={12} md={6} lg={6} xl={6} xxl={6}>
               <div className={classes.images}>
-                <Image src={car?.image} width={600} height={400} />
+                <Image
+                  src={car?.image}
+                  width={600}
+                  height={400}
+                  alt={car?.name}
+                />
               </div>
             </Col>
           </Row>

@@ -33,7 +33,7 @@ function Header() {
       };
       getCurrentUser();
     }
-  }, [pathName]);
+  }, []);
 
   //Logout Handle
 
