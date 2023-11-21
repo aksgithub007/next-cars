@@ -62,7 +62,7 @@ function DisplayAllCars() {
         <div className="row">
           {/* <DisplayCars cars={cars} user={user} /> */}
           {stateInfo?.data?.map((item) => (
-            <div className="col-4">
+            <div className="col-4" key={item.name}>
               <Card className={classes.card}>
                 <Card.Img
                   variant="top"

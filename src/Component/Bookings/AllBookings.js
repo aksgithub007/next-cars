@@ -61,7 +61,7 @@ function AllBookings() {
 
   useEffect(() => {
     getAllBookings();
-  }, [stateInfo]);
+  }, []);
 
   const columns = [
     {
