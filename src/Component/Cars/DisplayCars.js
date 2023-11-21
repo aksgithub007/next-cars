@@ -42,7 +42,10 @@ function DisplayCars({ cars, user }) {
   return (
     <>
       {cars?.map((item) => (
-        <div className="col-12 col-sm-12 col-md-6 col-xl-4 col-xxl-4 my-3">
+        <div
+          className="col-12 col-sm-12 col-md-6 col-xl-4 col-xxl-4 my-3"
+          key={item?.name}
+        >
           <Card style={{ width: "auto" }}>
             <Card.Img variant="top" src={item.image} />
             <Card.Body>
