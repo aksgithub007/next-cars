@@ -14,20 +14,12 @@ function AllBookings() {
   const router = useRouter();
   const userId = stateInfo?._id;
 
-  const getAllBookings = async () => {
-    const response = await axios.get(
-      `http://localhost:3000/api/users/booking?user=${userId}`
-    );
-    const finalData = await response.data.data;
-    setAllBookings(finalData);
-  };
-
   const handleButtonClick = async (e, row) => {
     console.log(e);
     console.log(row);
     row.status = "cancelled";
     const response = await axios.put(
-      `http://localhost:3000/api/users/booking/${row._id}`,
+      `https://carrental-delta.vercel.app/api/users/booking/${row._id}`,
       row
     );
 
@@ -44,7 +36,7 @@ function AllBookings() {
   };
   const handleDeleteBooking = async (e, row) => {
     const response = await axios.delete(
-      `http://localhost:3000/api/users/booking/${row._id}`,
+      `https://carrental-delta.vercel.app/api/users/booking/${row._id}`,
       row.status
     );
     console.log(response);
@@ -60,14 +52,26 @@ function AllBookings() {
   };
 
   useEffect(() => {
+    const getAllBookings = async () => {
+      const response = await axios.get(
+        `https://carrental-delta.vercel.app/api/users/booking?user=${userId}`
+      );
+      const finalData = await response.data.data;
+      setAllBookings(finalData);
+    };
+
     getAllBookings();
-  }, []);
+  }, [stateInfo]);
 
   const columns = [
     {
       name: "Image",
       selector: (row) => (
-        <img src={row.car.image} style={{ width: "80px", height: "80px" }} />
+        <img
+          src={row.car.image}
+          style={{ width: "80px", height: "80px" }}
+          alt={row.car.name}
+        />
       ),
     },
     {

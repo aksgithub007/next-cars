@@ -19,7 +19,7 @@ function HomeCarSection() {
   const router = useRouter();
   useEffect(() => {
     dispatch(carsThunk());
-  }, []);
+  }, [dispatch]);
 
   const handleDetails = (id) => {
     router.push(`/cars/${id}`);

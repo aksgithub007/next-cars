@@ -24,7 +24,7 @@ function Login() {
         password: data.password,
       };
       const response = await axios.post(
-        "http://localhost:3000/api/users/login",
+        "https://carrental-delta.vercel.app/api/users/login",
         finalInfo
       );
       const finalData = await response.data;

@@ -2,7 +2,9 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
 export const carsThunk = createAsyncThunk("car/rent", async () => {
-  const response = await axios.get("http://localhost:3000/api/users/car");
+  const response = await axios.get(
+    "https://carrental-delta.vercel.app/api/users/car"
+  );
   const finalData = await response.data;
   return finalData;
 });

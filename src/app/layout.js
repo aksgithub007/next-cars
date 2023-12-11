@@ -1,9 +1,9 @@
 import { Inter } from "next/font/google";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./globals.css";
-import Header from "@/Component/Header";
 import RootProvider from "@/Helper/RootProvider";
-import Carousel from "@/Component/Carousels";
+import Header from "@/Component/Header";
+import Carousels from "@/Component/Carousels";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -17,9 +17,10 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={inter.className}>
         <RootProvider>
-          <Header />
-          <Carousel />
-          {children}
+          <Header>
+            <Carousels />
+            {children}
+          </Header>
         </RootProvider>
       </body>
     </html>

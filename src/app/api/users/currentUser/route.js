@@ -6,6 +6,7 @@ import { NextResponse } from "next/server";
 export async function GET(request) {
   dbConnect();
   try {
+    const token = request.cookies.get("token")?.value;
     const userId = await validateToken(request);
 
     const user = await User.findById(userId).select("-password");

@@ -34,7 +34,7 @@ function CarDetailsInfo() {
     const gettingCarDetails = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:3000/api/users/car/${carId}`
+          `https://carrental-delta.vercel.app/api/users/car/${carId}`
         );
         const finalData = await response.data.data;
         setCar(finalData);
@@ -72,7 +72,7 @@ function CarDetailsInfo() {
     };
     try {
       const response = await axios.post(
-        "http://localhost:3000/api/users/booking",
+        "https://carrental-delta.vercel.app/api/users/booking",
         carBookInfo
       );
       const finalInfo = await response.data;
@@ -98,7 +98,7 @@ function CarDetailsInfo() {
     };
     try {
       const response = await axios.post(
-        "http://localhost:3000/api/users/checkSlot",
+        "https://carrental-delta.vercel.app/api/users/checkSlot",
         slotInfo
       );
       const finalInfo = await response.data;
