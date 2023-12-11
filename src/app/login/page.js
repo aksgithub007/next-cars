@@ -39,7 +39,7 @@ function Login() {
       Swal.fire({
         icon: "error",
         text: `${
-          error.response.data ? error.response.data.message : error.message
+          error.response?.data ? error.response?.data.message : error.message
         }`,
       });
     }
