@@ -40,14 +40,8 @@ function AddCarsForm({ user, show, setShow, rowInfo }) {
       };
       // console.log(finalCar);
       const response = rowInfo
-        ? await axios.put(
-            "https://carrental-delta.vercel.app/api/users/car",
-            finalCar
-          )
-        : await axios.post(
-            "https://carrental-delta.vercel.app/api/users/car",
-            finalCar
-          );
+        ? await axios.put("http://localhost:3000/api/users/car", finalCar)
+        : await axios.post("http://localhost:3000/api/users/car", finalCar);
       const finalInfo = await response.data;
       if (finalInfo.isSuccess) {
         Swal.fire({

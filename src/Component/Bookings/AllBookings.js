@@ -19,7 +19,7 @@ function AllBookings() {
     console.log(row);
     row.status = "cancelled";
     const response = await axios.put(
-      `https://carrental-delta.vercel.app/api/users/booking/${row._id}`,
+      `http://localhost:3000/api/users/booking/${row._id}`,
       row
     );
 
@@ -30,13 +30,13 @@ function AllBookings() {
         icon: "success",
         text: `${finalData?.message}`,
       });
-      getAllBookings();
+
       router.push("/bookings");
     }
   };
   const handleDeleteBooking = async (e, row) => {
     const response = await axios.delete(
-      `https://carrental-delta.vercel.app/api/users/booking/${row._id}`,
+      `http://localhost:3000/api/users/booking/${row._id}`,
       row.status
     );
     console.log(response);
@@ -46,7 +46,7 @@ function AllBookings() {
         icon: "success",
         text: `${finalData?.message}`,
       });
-      getAllBookings();
+
       router.push("/bookings");
     }
   };
@@ -54,7 +54,7 @@ function AllBookings() {
   useEffect(() => {
     const getAllBookings = async () => {
       const response = await axios.get(
-        `https://carrental-delta.vercel.app/api/users/booking?user=${userId}`
+        `http://localhost:3000/api/users/booking?user=${userId}`
       );
       const finalData = await response.data.data;
       setAllBookings(finalData);

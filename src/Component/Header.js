@@ -22,7 +22,7 @@ function Header({ children }) {
   const getCurrentUser = async () => {
     try {
       const response = await axios.get(
-        "https://carrental-delta.vercel.app/api/users/currentUser"
+        "http://localhost:3000/api/users/currentUser"
       );
       const finalData = await response.data.data;
       console.log(finalData, "Current User");
@@ -38,14 +38,15 @@ function Header({ children }) {
     if (pathName !== "/login" || pathName !== "/register") {
       getCurrentUser();
     }
-  }, [pathName]);
+    // getCurrentUser();
+  }, []);
 
   //Logout Handle
 
   const logoutHandler = async () => {
     try {
       const response = await axios.get(
-        "https://carrental-delta.vercel.app/api/users/logout"
+        "http://localhost:3000/api/users/logout"
       );
       const finalData = response.data;
       if (finalData.isLogout) {

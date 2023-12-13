@@ -41,7 +41,7 @@ function DisplayAllCars() {
   const handlDelete = async (e, id) => {
     try {
       const response = await axios.delete(
-        `https://carrental-delta.vercel.app/api/users/car/${id}`
+        `http://localhost:3000/api/users/car/${id}`
       );
       const finalInfo = await response.data;
       if (finalInfo?.isSuccess) {
