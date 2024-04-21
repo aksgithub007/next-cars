@@ -4,6 +4,9 @@ export function middleware(request) {
   console.log("Middleware called");
   const token = request.cookies.get("token")?.value;
   // console.log(token);
+  // console.log(token);
+  // console.log(token);
+  // console.log(token);s
   const { pathname } = request.nextUrl;
   const publicRoute = pathname === "/login" || pathname === "/register";
 
